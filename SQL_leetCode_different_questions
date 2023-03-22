@@ -5,5 +5,22 @@ select sell_date, count( DISTINCT product ) as num_sold ,
     GROUP_CONCAT( DISTINCT product order by product ASC separator ',' ) as products
     
         FROM Activities GROUP BY sell_date order by sell_date ASC;
+        ---------------------
+Pivot-Columns to rows
+------------------------
         
-        
+ SELECT product_id, 'store1' AS store, store1 AS price 
+FROM Products 
+WHERE store1 IS NOT NULL
+UNION 
+SELECT product_id, 'store2' AS store, store2 AS price 
+FROM Products 
+WHERE store2 IS NOT NULL
+UNION 
+SELECT product_id, 'store3' AS store, store3 AS price 
+FROM Products 
+WHERE store3 IS NOT NULL
+-------------------------------
+second highest salary
+-----------------------------
+SELECT MAX(SALARY) AS SecondHighestSalary FROM EMPLOYEE WHERE SALARY<>(SELECT MAX(SALARY) FROM EMPLOYEE);
